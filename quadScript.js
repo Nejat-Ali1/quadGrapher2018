@@ -8,32 +8,41 @@ function init() {
   h = canvas.height = 400;
   console.log('canvas is loaded into context',w);
   graphpaper();
+  QF();
 
 }  // close init
+
 
 function QF() {
   // getting values to do quadratic formula
   a = $("#quadA").val();
   b = $("#linB").val();
   c = $("#constant").val();
-  x1 = (-b +Math.sqrt(b**2 - 4*a * c)) / (2*a);b
+  x1 = (-b +Math.sqrt(b**2 - 4*a * c)) / (2*a);
   x1= Math.round(x1*100)/100;
   x2 = (-b -Math.sqrt(b**2 - 4*a * c)) / (2*a);
   x2= Math.round(x2*100)/100;
   $("#solution1").text("X Interceot is at "+x1);
   $("#solution2").text("X Interceot is at "+x2);
     console.log(a,b,c);
-    results(); graphQuad; 
+    results(); 
     graphpaper(); 
     graphQuad();
 }  // close QF
+
 function results() {
   // finding vertext and displaying symline and yint results
   vX = -(b*1)/(2*a);
   vY = a*Math.pow(vX,2)+b*vX+c*1;
   $("#vertex").text("Vertex is at (" + vX+","+vY+")");
   $("#y-int").text(" Y intercept is at (0,"+ c +")");
+  ctx.fillstyle="green";
+  ctx.beginPath();
+  ctx.arc(w/2+vX,c,10,0,6.28);
+  ctx.fill();
+
 }  // close results()
+
 function graphpaper() {
   // the x and y axis drawn
   ctx.lineWidth= 3; 
@@ -93,11 +102,11 @@ function graphQuad () {
     ny =  c*1+b*nx+a*Math.pow(nx,2);
     console.log(x,y,nx,ny); 
 
-    context.beginPath();
-    context.lineWidth = 2;
-    context.strokeStyle = "red";
-    context.moveTo(w/2+x*k,h/2-y*k);
-    context.lineTo(w/2+nx*k,h/2-ny*k);
-    context.stroke();
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "red";
+    ctx.moveTo(w/2+x*k,h/2-y*k);
+    ctx.lineTo(w/2+nx*k,h/2-ny*k);
+    ctx.stroke();
   }
 }
