@@ -1,5 +1,5 @@
 //Javascript for drawing and calculating quadratics 2017
-var a, b, c, context, w, h, k=10;
+var a, b, c, context, w, h, k=20;
 
 function init() {
   canvas= document.getElementById("mycanvas");
@@ -35,17 +35,25 @@ function results() {
   vX = -(b*1)/(2*a);
   vY = a*Math.pow(vX,2)+b*vX+c*1;
   $("#vertex").text("Vertex is at (" + vX+","+vY+")");
-  $("#y-int").text(" Y intercept is at (0,"+ c +")");
-  ctx.fillstyle="green";
   ctx.beginPath();
-  ctx.arc(w/2+vX,c,10,0,6.28);
+  ctx.arc(w/2+vX*k,h/2-vY*k,10,0,6.28);
+  ctx.fill();
+  $("#y-int").text(" Y intercept is at (0,"+ c +")");
+  ctx.fillStyle="green";
+  ctx.beginPath();
+  ctx.arc(w/2,h/2-c*k,10,0,6.28);
+  ctx.fill();
+  Xcp = 2*vX; 
+  $("#cp").text ("corr. Pt is at ("+Xcp+","+c+")"); 
+ctx.beginPath();
+  ctx.arc(E,h/2-c*k,10,0,6.28);
   ctx.fill();
 
 }  // close results()
 
 function graphpaper() {
   // the x and y axis drawn
-  ctx.lineWidth= 3; 
+  ctx.lineWidth= 2; 
   ctx.beginPath();
   ctx.moveTo(w/2,0);
   ctx.lineTo(w/2,h); 
@@ -57,7 +65,7 @@ function graphpaper() {
   ctx.stroke(); 
 
   // thin line with a 50% opacity using rgba() 
-  ctx.strokeStyle="rgba(0,0,255,.5)";
+  ctx.strokeStyle="rgba(0,0,255,.2)";
 
   //using the direct variation constant, k
   //  here are the vertical and horizontal lines
