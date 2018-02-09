@@ -46,7 +46,7 @@ function results() {
   Xcp = 2*vX; 
   $("#cp").text ("corr. Pt is at ("+Xcp+","+c+")"); 
 ctx.beginPath();
-  ctx.arc(E,h/2-c*k,10,0,6.28);
+  ctx.arc(w,h/2-c*k,10,0,6.28);
   ctx.fill();
 
 }  // close results()
